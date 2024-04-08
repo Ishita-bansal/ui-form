@@ -2,11 +2,13 @@ import {BrowserRouter,Routes,Route,Navigate} from "react-router-dom"
 import React from "react";
 import {Register,Login,Dashboard,Profile,Tabledashboard,Page404} from "../pages"
 import { useSelector } from "react-redux";
+import Maincontainer from "../components/maincontainer";
+
 function Router(){
  const logedUser = useSelector((state)=>state.Loginreducer);
  
    const PrivateRouter = ({element})=>{ 
-      return  logedUser?.isLoggedIn ? element : Navigate('/login');
+      return  logedUser?.isLoggedIn ? <> <Maincontainer  elements={element}/> </> : Navigate('/login');
    }
 
    const PublicRouter = ({element})=>{
@@ -21,7 +23,7 @@ function Router(){
                 <Route path="/dashboard" element= {<PrivateRouter  element={<Dashboard/>} />}/>
                 <Route path="/profile" element={<PrivateRouter element={<Profile/>} />}  />
                 <Route path="/tabledashboard" element={<PrivateRouter element={<Tabledashboard/>}/>}/>
-                {/* <Route path="/tabledashboard" element={<Tabledashboard/>}/> */}
+                
                 <Route path="/*" element={<Page404/>} />
             </Routes>
           </BrowserRouter>

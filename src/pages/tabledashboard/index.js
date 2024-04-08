@@ -42,7 +42,7 @@ function Tabledashboard(){
     }
     return(
         <div className="table-container">
-         <TableContainer sx={{width:"80%",backgroundColor:"white",margin:"30px",borderRadius:"20px"}}>
+         <TableContainer sx={{width:"80%",height:"700px",backgroundColor:"#f2f2f2",margin:"30px",borderRadius:"20px"}}>
             <Table>
           <TableHead>
           <TableRow>
