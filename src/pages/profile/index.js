@@ -55,12 +55,12 @@ const formik = useFormik({
 const {handleSubmit,values,setFieldValue,setTouched ,touched,errors} = formik
      return(
         <>
-       <div className="profile-container">
+    
          <div className="user-profile">
            <div class="row">
                <div class="col-lg-3">
                     <div className="sideDiv">
-                        <Avatar  sx={{width:"100px",height:"100px" ,marginTop:"100px",marginLeft:"150px",textTransform:"capitalize"}}>{userlogdata?.name[0]}</Avatar>
+                        <Avatar  sx={{width:"100px",height:"100px" ,marginTop:"100px",marginLeft:"100px",textTransform:"capitalize"}}>{userlogdata?.name[0]}</Avatar>
                         <h1 style={{textAlign:"center",color:"white"}}>User</h1>
                     </div>
                </div>
@@ -88,7 +88,7 @@ const {handleSubmit,values,setFieldValue,setTouched ,touched,errors} = formik
                </div>
            </div>
          </div>
-       </div>
+      
         </>
      )
 }

@@ -10,7 +10,7 @@ function Page404(){
         <div className="notavailable">
             <img src={image1} alt="img" />
             <h1>404 PAGE NOT FOUND</h1>
-            <Button variant="contained" onClick={()=>{navigate('/Register')}}>Go To Register Page</Button>
+            <Button variant="contained" onClick={()=>{navigate('/register')}}>Go To Register Page</Button>
         </div>
         </>
     )
