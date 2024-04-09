@@ -24,7 +24,7 @@ function Router(){
                 <Route path="/profile" element={<PrivateRouter element={<Profile/>} />}  />
                 <Route path="/tabledashboard" element={<PrivateRouter element={<Tabledashboard/>}/>}/>
                 <Route path="/adduser" element = {<PrivateRouter element={<Adduser/>} /> } />
-                <Route path="/edituser" element= {<PrivateRouter element={<Edituser/>} />} />
+                <Route path="/edituser/:email" element= {<PrivateRouter element={<Edituser/>} />} />
                 <Route path="/*" element={<Page404/>} />
             </Routes>
           </BrowserRouter>

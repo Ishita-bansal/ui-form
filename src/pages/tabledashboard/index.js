@@ -66,7 +66,7 @@ function Tabledashboard() {
   const onActionsHandler=(obj,user)=>{
     if(obj.indetifier==="edit")
     {
-        navigate('/edituser')
+      navigate(`/edituser/${user.email}`, { state: { user } }); 
       
         // alert("edit")
     }
@@ -80,8 +80,6 @@ function Tabledashboard() {
         // navigate('/edituser')
         alert("view")
     }
-    
-
   }
 
   return (
@@ -139,6 +137,24 @@ function Tabledashboard() {
                   fontWeight: "bolder",
                 }}
               >
+                Confirm Password
+              </TableCell>
+              <TableCell
+                style={{
+                  textAlign: "center",
+                  fontSize: "20px",
+                  fontWeight: "bolder",
+                }}
+              >
+               checked
+              </TableCell>
+              <TableCell
+                style={{
+                  textAlign: "center",
+                  fontSize: "20px",
+                  fontWeight: "bolder",
+                }}
+              >
                 Actions
               </TableCell>
             </TableRow>
@@ -156,6 +172,12 @@ function Tabledashboard() {
                   </TableCell>
                   <TableCell style={{ textAlign: "center", fontSize: "18px" }}>
                     {users.password}
+                  </TableCell>
+                  <TableCell style={{ textAlign: "center", fontSize: "18px" }}>
+                    {users.confirmpass}
+                  </TableCell>
+                  <TableCell style={{ textAlign: "center", fontSize: "18px" }}>
+                    {users.checked}
                   </TableCell>
                   <TableCell style={{ textAlign: "center" }}>
                     <div style={{ display: "flex", justifyContent: "center" }}>

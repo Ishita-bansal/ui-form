@@ -10,7 +10,7 @@ import { register } from "../../redux/action";
 import { update } from "../../redux/action";
 import { toast } from "react-toastify";
 import TOASTMESSAGE from "../../constants";
-
+import { useParams ,useLocation} from "react-router-dom";
 const emailregex =
   /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
@@ -45,7 +45,14 @@ const Edituser = () => {
     const userProfile = useSelector((state)=>state?.Loginreducer)
     // console.log("userProfile===", userProfile);
 
+    
+    const { email } = useParams();
+    const location = useLocation();
+    const user = location.state?.user || {};
+    console.log("user===>",user)
+
   const onSubmit = (values) => {
+   
         //  const editarray = userdetail.filter((users)=>{
         //     return users.email !== values.email;
         //  })
@@ -61,11 +68,11 @@ const Edituser = () => {
 
   const formik = useFormik({
     initialValues: {
-        name:'',
-        email:'',
-        password:'',
-        confirmpass:'',
-        checked:''
+        name:user?.name || '',
+        email:user?.email || '',
+        password:user?.password || '' ,
+        confirmpass:user?.confirmpass || '' ,
+        checked:user?.checked || false
     },
     onSubmit: onSubmit,
     validationSchema: validationSchema,
