@@ -1,6 +1,6 @@
 import {BrowserRouter,Routes,Route,Navigate} from "react-router-dom"
 import React from "react";
-import {Register,Login,Dashboard,Profile,Tabledashboard,Page404} from "../pages"
+import {Register,Login,Dashboard,Profile,Tabledashboard,Page404, Adduser, Edituser} from "../pages"
 import { useSelector } from "react-redux";
 import Maincontainer from "../components/maincontainer";
 
@@ -23,7 +23,8 @@ function Router(){
                 <Route path="/dashboard" element= {<PrivateRouter  element={<Dashboard/>} />}/>
                 <Route path="/profile" element={<PrivateRouter element={<Profile/>} />}  />
                 <Route path="/tabledashboard" element={<PrivateRouter element={<Tabledashboard/>}/>}/>
-                
+                <Route path="/adduser" element = {<PrivateRouter element={<Adduser/>} /> } />
+                <Route path="/edituser" element= {<PrivateRouter element={<Edituser/>} />} />
                 <Route path="/*" element={<Page404/>} />
             </Routes>
           </BrowserRouter>

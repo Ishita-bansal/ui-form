@@ -102,8 +102,8 @@ let emailArray = userData.registerUser?.map((obj)=>{
         <div className="formbox">
           <h1>Register</h1>
           <form onSubmit={handleSubmit}>
-            <div className="inputs">
-              <div className="input-fields">
+            <div className="register-inputs">
+              <div className="register-input-fields">
                 <FontAwesomeIcon icon={faUser} className="fonticon" />
                 <input
                   name="name"
@@ -115,7 +115,7 @@ let emailArray = userData.registerUser?.map((obj)=>{
                 />
               </div>
               <Errorhandle  touched={touched} errors={errors} fieldName="name"/>
-              <div className="input-fields">
+              <div className="register-input-fields">
                 <FontAwesomeIcon icon={faEnvelope} className="fonticon" />
                 <input
                   name="email"
@@ -127,7 +127,7 @@ let emailArray = userData.registerUser?.map((obj)=>{
                 />
               </div>
               <Errorhandle  touched={touched} errors={errors} fieldName="email"/>
-              <div className="input-fields">
+              <div className="register-input-fields">
                 <FontAwesomeIcon icon={faLock} className="fonticon" />
                 <input
                   name="password"
@@ -138,10 +138,10 @@ let emailArray = userData.registerUser?.map((obj)=>{
                   }
                   placeholder="Password"
                 />
-                <button className="registereyebtn" type="button" onClick={togglepassword}>{showPassword? <FontAwesomeIcon icon={faEyeSlash} className="eyeicon"/>: <FontAwesomeIcon icon={faEye} className="eyeicon" />}</button>
+                <button className="registereyebtn" type="button" onClick={togglepassword}>{showPassword? <FontAwesomeIcon icon={faEye} className="eyeicon"/>: <FontAwesomeIcon icon={faEyeSlash} className="eyeicon" />}</button>
               </div>
              <Errorhandle  touched={touched} errors={errors} fieldName="password"/>
-              <div className="input-fields">
+              <div className="register-input-fields">
                 <FontAwesomeIcon icon={faLock} className="fonticon" />
                 <input
                   name="confirmpass"
@@ -152,11 +152,11 @@ let emailArray = userData.registerUser?.map((obj)=>{
                   onBlur={() =>setTouched({ ...touched, confirmpass: true })
                   }
                 />
-                <button className="registereyebtn" type="button" onClick={toggleconfirmpassword}>{showconfirmpass? <FontAwesomeIcon icon={faEyeSlash} className="eyeicon"/>: <FontAwesomeIcon icon={faEye} className="eyeicon" />}</button>
+                <button className="registereyebtn" type="button" onClick={toggleconfirmpassword}>{showconfirmpass? <FontAwesomeIcon icon={faEye} className="eyeicon"/>: <FontAwesomeIcon icon={faEyeSlash} className="eyeicon" />}</button>
               </div>
               <Errorhandle  touched={touched} errors={errors} fieldName="confirmpass"/>
 
-              <div>
+              <div className="register-label">
                 <label>
                   <input
                     name="checked"

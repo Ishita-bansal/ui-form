@@ -39,12 +39,11 @@
   transform: translate(-50%);
 }
 
-.inputs{
-    
+.register-inputs{
     width:100%;
 }
 
-.input-fields{
+.register-input-fields{
     background:#eaeaea;
     margin:15px 0;
     border-radius:3px;
@@ -52,7 +51,7 @@
     align-items: center;
 }
 
-input[type=text],input[type=email],input[type=password]{
+.register-input-fields input[type=text],input[type=email],input[type=password]{
     width:100%;
     background:transparent;
     border:0;
@@ -61,7 +60,7 @@ input[type=text],input[type=email],input[type=password]{
     font-size: 17px;
 }
 
-label{
+.register-label label{
     display:flex;
     gap:20px;
     font-size: 18px;

@@ -55,17 +55,9 @@ const formik = useFormik({
 const {handleSubmit,values,setFieldValue,setTouched ,touched,errors} = formik
      return(
         <>
-    
-         <div className="user-profile">
-           <div class="row">
-               <div class="col-lg-3">
-                    <div className="sideDiv">
-                        <Avatar  sx={{width:"100px",height:"100px" ,marginTop:"100px",marginLeft:"100px",textTransform:"capitalize"}}>{userlogdata?.name[0]}</Avatar>
-                        <h1 style={{textAlign:"center",color:"white"}}>User</h1>
-                    </div>
-               </div>
-               <div class="col-lg-9" >
-                   <h1 style={{marginTop:"70px"}}>Details</h1>
+           <div class="row" className="user-profile">
+               <div class="col-lg-12" >
+                   <h1 style={{marginTop:"20px"}}>Details</h1>
                    <form onSubmit={handleSubmit}>
                       <div className="profile-inputs">
                         <div className="profile-input-fields">
@@ -87,8 +79,6 @@ const {handleSubmit,values,setFieldValue,setTouched ,touched,errors} = formik
                    </form>
                </div>
            </div>
-         </div>
-      
         </>
      )
 }

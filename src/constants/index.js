@@ -3,7 +3,9 @@ const TOASTMESSAGE = {
     EMAILCHECK:"Email already exiists",
     LOGINCHECK:"Your credentials are not valid",
     LOGIN:"Login Successfully",
-    LOGOUT:"Logout Successfully"
+    LOGOUT:"Logout Successfully",
+    ADD:"Add New User Successfully",
+    EDIT:"Edit User Successfully "
 }
 
 export default TOASTMESSAGE;
