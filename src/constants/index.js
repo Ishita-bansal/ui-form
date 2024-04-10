@@ -5,8 +5,7 @@ const TOASTMESSAGE = {
     LOGIN:"Login Successfully",
     LOGOUT:"Logout Successfully",
     ADD:"Add New User Successfully",
-    EDIT:"Edit User Successfully ",
-    EXISTUSER : "User Already Exists"
+    EDIT:"Edit User Successfully "
 }
 
 export default TOASTMESSAGE;

@@ -83,7 +83,7 @@ const Navbar = ()=>{
           <Tooltip title="Open settings" >
             <IconButton onClick={handlemenu}>
               <Avatar style={{ textTransform: "capitalize" }}>
-                {userDetail?.name?.[0]}
+                {userDetail?.name[0]}
               </Avatar>
             </IconButton>
           </Tooltip>

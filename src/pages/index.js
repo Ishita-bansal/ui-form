@@ -6,4 +6,4 @@ export {default as Tabledashboard} from "./tabledashboard";
 export {default as Page404} from "./page404";
 export {default as Adduser} from "./adduser";
 export  {default as Edituser} from "./edituser";
-export {default as Uipage} from "./uipage";
+export {default as Formformik} from "./formformik";

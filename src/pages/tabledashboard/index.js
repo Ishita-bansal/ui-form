@@ -47,10 +47,10 @@ function Tabledashboard() {
   const [rowsperPage, setrowsperPage] = useState(5);
 
   const usertable = useSelector((state) => state?.Registerreducer);
-  // console.log("user table=======>", usertable);
+  console.log("user table=======>", usertable);
 
   const userdata = usertable.registerUser || [];
-  // console.log("user data=====>",userdata);
+  console.log("user data=====>",userdata);
 
   const onChangePage = (event, nextPage) => {
     setPage(nextPage);
@@ -93,7 +93,7 @@ function Tabledashboard() {
       </div>
       <TableContainer
         sx={{
-          width: "75%",
+          width: "80%",
           height: "650px",
           backgroundColor: "#f2f2f2",
           margin: "50px",
@@ -146,6 +146,15 @@ function Tabledashboard() {
                   fontWeight: "bolder",
                 }}
               >
+               checked
+              </TableCell>
+              <TableCell
+                style={{
+                  textAlign: "center",
+                  fontSize: "20px",
+                  fontWeight: "bolder",
+                }}
+              >
                 Actions
               </TableCell>
             </TableRow>
@@ -166,6 +175,9 @@ function Tabledashboard() {
                   </TableCell>
                   <TableCell style={{ textAlign: "center", fontSize: "18px" }}>
                     {users.confirmpass}
+                  </TableCell>
+                  <TableCell style={{ textAlign: "center", fontSize: "18px" }}>
+                    {users.checked}
                   </TableCell>
                   <TableCell style={{ textAlign: "center" }}>
                     <div style={{ display: "flex", justifyContent: "center" }}>

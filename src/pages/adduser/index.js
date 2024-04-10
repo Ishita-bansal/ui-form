@@ -8,14 +8,13 @@ import { Errorhandle } from "../../components";
 import { useSelector,useDispatch } from "react-redux";
 import { register } from "../../redux/action";
 import { toast } from "react-toastify";
-import {useNavigate} from "react-router-dom";
 import TOASTMESSAGE from "../../constants";
 const defaultValues = {
   name: "",
   email: "",
   password: "",
   confirmpass: "",
-  
+  checked: false,
 };
 const emailregex =
   /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -37,32 +36,26 @@ const validationSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref("password")], "password must match")
     .required("Required*"),
-
+  checked: yup
+    .boolean()
+    .oneOf([true], "You must agree to the terms and conditions"),
 });
 
 const Adduser = () => {
-   const navigate = useNavigate();
     const dispatch = useDispatch();
     const userData = useSelector((state)=>state?.Registerreducer);
     const userdetail = userData?.registerUser || []
     console.log("users data====>",userdetail);
 
   const onSubmit = (values) => {
-   const addusers = userdetail?.some((users)=>{
-       return users.email === values.email
+   const filterArray = userdetail?.filter((users)=>{
+       return users.email !== values.email
    })
- console.log("add users=========>",addusers);
-   if(addusers){
-      toast.error(TOASTMESSAGE.EXISTUSER);
-  }  
-  else{
-
-       dispatch(register([...userdetail, values]));
-       toast.success(TOASTMESSAGE.ADD);
-       navigate('/tabledashboard')
+   filterArray?.push(values);
+   dispatch(register(filterArray));
+  toast.success(TOASTMESSAGE.ADD);
        console.log("values===>",values);
-   }
-}
+  };
 
   const formik = useFormik({
     initialValues: defaultValues,
@@ -140,7 +133,14 @@ const Adduser = () => {
            
           </div>
         </div>
-        
+        <div className="adduser-label-input-fields">
+          <label>
+            <input name="checked" type="checkbox" value={values.checked} onChange={(e)=>setFieldValue("checked",e.target.value)} onBlur={()=>setTouched({...touched,checked:true})}/>I agree to the terms & condition
+          </label>
+        </div>
+        <div  style={{marginLeft:"150px"}}>
+        <Errorhandle touched={touched} errors={errors} fieldName="checked"/>
+        </div>
        
         <div className="adduser-btn">
           <button type="submit">Add</button>

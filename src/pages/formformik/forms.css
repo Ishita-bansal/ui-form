@@ -1,0 +1,14 @@
+
+.form-inputs{
+     width:800px;
+     height:800px;
+     border:3px solid green;
+     display:flex;
+     flex-direction: column;
+     justify-content: space-evenly;
+}
+
+.form-input-fields input{
+    width:250px;
+    height:50px;
+}

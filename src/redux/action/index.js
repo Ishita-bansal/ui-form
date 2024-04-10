@@ -26,11 +26,3 @@ export const update = (payload)=>{
     payload:payload
    }
 }
-
-export const registerupdate = (payload)=>{
-  return{
-    type:ACTIONTYPE.REGISTERUPDATE,
-    payload:payload
-  }
-}
-
