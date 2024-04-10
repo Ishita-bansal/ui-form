@@ -7,10 +7,12 @@ import * as yup from "yup";
 import { Errorhandle } from "../../components";
 import { useSelector,useDispatch } from "react-redux";
 import { register } from "../../redux/action";
+import { registerupdate } from "../../redux/action";
 import { update } from "../../redux/action";
 import { toast } from "react-toastify";
 import TOASTMESSAGE from "../../constants";
-import { useParams ,useLocation} from "react-router-dom";
+import { useParams } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 const emailregex =
   /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
@@ -30,39 +32,43 @@ const validationSchema = yup.object().shape({
   confirmpass: yup
     .string()
     .oneOf([yup.ref("password")], "password must match")
-    .required("Required*"),
-  checked: yup
-    .boolean()
-    .oneOf([true], "You must agree to the terms and conditions"),
+    .required("Required*")
 });
 
 const Edituser = () => {
-    // const dispatch = useDispatch();
+   const navigate = useNavigate();
+    const dispatch = useDispatch();
     const userData = useSelector((state)=>state?.Registerreducer);
     const userdetail = userData?.registerUser || []
-    console.log("users detailllllllll====>",userdetail);
-
-    // const userProfile = useSelector((state)=>state?.Loginreducer)
-    // console.log("userProfile===", userProfile);
 
     
+    const loggedUser = useSelector((state)=>state?.Loginreducer);
+  
+
     const { email } = useParams();
     const currentUser = userdetail.find((user)=>user.email === email)
 
   const onSubmit = (values) => {
-   
-        //  const editarray = userdetail.filter((users)=>{
-        //     return users.email !== values.email;
-        //  })
-        //  console.log("editarray====>",editarray);
-       
-        //  editarray.push(values);
-        //  dispatch(register(editarray));
-        //  dispatch(update(values));
-        //  toast.success(TOASTMESSAGE.EDIT);
-         
-       
+         const editarray = userdetail.filter((users)=>{
+            return  users.email !== loggedUser.email && users.email !== email
+         })
+         console.log("values of edit array====>",editarray);
+         if(editarray.length === 0){
+         editarray.push(values);
+        dispatch(registerupdate(editarray));
+        dispatch(update(values));
+         }
+         else{
+       const edituser = userdetail.filter((users)=>{
+        return users.email !== email
+       });
+       edituser.push(values)
+       dispatch(registerupdate(edituser));
+      toast.success(TOASTMESSAGE.EDIT);   
+       navigate('/tabledashboard');
+      }
   };
+
 
   const formik = useFormik({
     initialValues: {
@@ -146,15 +152,7 @@ const Edituser = () => {
            
           </div>
         </div>
-        <div className="adduser-label-input-fields">
-          <label>
-            <input name="checked" type="checkbox" value={values.checked} onChange={(e)=>setFieldValue("checked",e.target.value)} onBlur={()=>setTouched({...touched,checked:true})}/>I agree to the terms & condition
-          </label>
-        </div>
-        <div  style={{marginLeft:"150px"}}>
-        <Errorhandle touched={touched} errors={errors} fieldName="checked"/>
-        </div>
-       
+     
         <div className="adduser-btn">
           <button type="submit">Edit</button>
         </div>

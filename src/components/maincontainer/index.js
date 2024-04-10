@@ -8,7 +8,6 @@ const Maincontainer = ({elements}) =>{
         <>
              <div style={{ position: "relative" }}>
                 <Sidenav/>
-          {/* <h1 style={{position:"absolute",top:"120px" , left:"500px"}}>User Management</h1> */}
                 <div className="display-data">
                     {elements}
                 </div>  

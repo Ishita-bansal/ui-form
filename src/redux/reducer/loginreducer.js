@@ -34,6 +34,7 @@ const Loginreducer = (state=defaultValues , action)=>{
                 }
             default: return state; 
      }
+        
 }
 
 export default Loginreducer;
