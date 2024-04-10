@@ -66,9 +66,9 @@ function Tabledashboard() {
   const onActionsHandler=(obj,user)=>{
     if(obj.indetifier==="edit")
     {
-      navigate(`/edituser/${user.email}`, { state: { user } }); 
+      // navigate(`/edituser/${user.email}`, { state: { user } }); 
+      navigate(`/edituser/${user.email}`)
       
-        // alert("edit")
     }
     if(obj.indetifier==="delete")
     {

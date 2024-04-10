@@ -37,19 +37,17 @@ const validationSchema = yup.object().shape({
 });
 
 const Edituser = () => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const userData = useSelector((state)=>state?.Registerreducer);
     const userdetail = userData?.registerUser || []
-    // console.log("users data====>",userdetail);
+    console.log("users detailllllllll====>",userdetail);
 
-    const userProfile = useSelector((state)=>state?.Loginreducer)
+    // const userProfile = useSelector((state)=>state?.Loginreducer)
     // console.log("userProfile===", userProfile);
 
     
     const { email } = useParams();
-    const location = useLocation();
-    const user = location.state?.user || {};
-    console.log("user===>",user)
+    const currentUser = userdetail.find((user)=>user.email === email)
 
   const onSubmit = (values) => {
    
@@ -68,11 +66,11 @@ const Edituser = () => {
 
   const formik = useFormik({
     initialValues: {
-        name:user?.name || '',
-        email:user?.email || '',
-        password:user?.password || '' ,
-        confirmpass:user?.confirmpass || '' ,
-        checked:user?.checked || false
+        name:currentUser?.name || '',
+        email:currentUser?.email || '',
+        password:currentUser?.password || '' ,
+        confirmpass:currentUser?.confirmpass || '' ,
+        checked:currentUser?.checked || false
     },
     onSubmit: onSubmit,
     validationSchema: validationSchema,
@@ -150,7 +148,7 @@ const Edituser = () => {
         </div>
         <div className="adduser-label-input-fields">
           <label>
-            <input name="checked" type="checkbox" value={values.checked} onChange={(e)=>setFieldValue("checked",!values.checked)} onBlur={()=>setTouched({...touched,checked:true})}/>I agree to the terms & condition
+            <input name="checked" type="checkbox" value={values.checked} onChange={(e)=>setFieldValue("checked",e.target.value)} onBlur={()=>setTouched({...touched,checked:true})}/>I agree to the terms & condition
           </label>
         </div>
         <div  style={{marginLeft:"150px"}}>

@@ -135,7 +135,7 @@ const Adduser = () => {
         </div>
         <div className="adduser-label-input-fields">
           <label>
-            <input name="checked" type="checkbox" value={values.checked} onChange={(e)=>setFieldValue("checked",!values.checked)} onBlur={()=>setTouched({...touched,checked:true})}/>I agree to the terms & condition
+            <input name="checked" type="checkbox" value={values.checked} onChange={(e)=>setFieldValue("checked",e.target.value)} onBlur={()=>setTouched({...touched,checked:true})}/>I agree to the terms & condition
           </label>
         </div>
         <div  style={{marginLeft:"150px"}}>
